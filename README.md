@@ -14,4 +14,4 @@ Other things on the roadmap include:
 -A solver that suggests the best swaps you can make to guarantee 5 stars every time  
 -Optimisation for the current solver, possibly migrating computationally complex parts to C++
 
-If you want to contribute to the project or simply say thank you, you can find me on discord as _black_n_white_
+If you want to contribute to the project or simply say thank you, you can find me on discord as `_black_n_white_`
