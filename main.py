@@ -13,10 +13,9 @@ IS_TESTING = False  # True to use pre-made grid from testing.py, False to ask th
 
 # Get words from words.txt
 words_raw = open("words.txt", "r")
-words = []
-
-for i in range(2315):
-    words.append(words_raw.readline()[0:5])
+words = words_raw.readlines()
+for i in range(len(words)):
+    words[i] = words[i][0:5]
 
 
 if IS_TESTING:  # Solve pre-made grid
@@ -53,6 +52,7 @@ if IS_TESTING:  # Solve pre-made grid
 
 
 else:  # Solve grid made by user
+    # Get grid from user
     for i in grid.keys():
         # Clear terminal and print grid
         if grid[i] == "BLANK":

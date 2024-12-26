@@ -1,4 +1,5 @@
 # Daily Waffle grid for testing
+# This is waffle 701
 
 test_grid = {
     "0-5": {"type": "g", "letter": "g"},

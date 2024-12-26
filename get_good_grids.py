@@ -22,51 +22,50 @@ def get_good_grids(triples: list, letters: str, fn_words: list):
             remaining_letters = remaining_letters.replace(letter, "", 1)
 
         # Calculate full grids
-        for triple_permutation in list(itertools.permutations(triple)):
-            for letter_permutation in list(itertools.permutations(remaining_letters)):
-                # If all words across are in the words list, add grid to full_grids
-                if (
-                    triple_permutation[0][0]
-                    + letter_permutation[0]
-                    + triple_permutation[1][0]
-                    + letter_permutation[1]
-                    + triple_permutation[2][0]
-                    in fn_words
-                    and triple_permutation[0][2]
-                    + letter_permutation[2]
-                    + triple_permutation[1][2]
-                    + letter_permutation[3]
-                    + triple_permutation[2][2]
-                    in fn_words
-                    and triple_permutation[0][4]
-                    + letter_permutation[4]
-                    + triple_permutation[1][4]
-                    + letter_permutation[5]
-                    + triple_permutation[2][4]
-                    in fn_words
-                ):
-                    full_grids.append(
+        for letter_permutation in list(itertools.permutations(remaining_letters)):
+            # If all words across are in the words list, add grid to full_grids
+            if (
+                triple[0][0]
+                + letter_permutation[0]
+                + triple[1][0]
+                + letter_permutation[1]
+                + triple[2][0]
+                in fn_words
+                and triple[0][2]
+                + letter_permutation[2]
+                + triple[1][2]
+                + letter_permutation[3]
+                + triple[2][2]
+                in fn_words
+                and triple[0][4]
+                + letter_permutation[4]
+                + triple[1][4]
+                + letter_permutation[5]
+                + triple[2][4]
+                in fn_words
+            ):
+                full_grids.append(
+                    (
+                        triple,
                         (
-                            triple_permutation,
-                            (
-                                triple_permutation[0][0]
-                                + letter_permutation[0]
-                                + triple_permutation[1][0]
-                                + letter_permutation[1]
-                                + triple_permutation[2][0],
-                                triple_permutation[0][2]
-                                + letter_permutation[2]
-                                + triple_permutation[1][2]
-                                + letter_permutation[3]
-                                + triple_permutation[2][2],
-                                triple_permutation[0][4]
-                                + letter_permutation[4]
-                                + triple_permutation[1][4]
-                                + letter_permutation[5]
-                                + triple_permutation[2][4],
-                            ),
-                        )
+                            triple[0][0]
+                            + letter_permutation[0]
+                            + triple[1][0]
+                            + letter_permutation[1]
+                            + triple[2][0],
+                            triple[0][2]
+                            + letter_permutation[2]
+                            + triple[1][2]
+                            + letter_permutation[3]
+                            + triple[2][2],
+                            triple[0][4]
+                            + letter_permutation[4]
+                            + triple[1][4]
+                            + letter_permutation[5]
+                            + triple[2][4],
+                        ),
                     )
+                )
 
     print(f"Full Grid search done. Found {len(full_grids)} possible full grids.")
     return list(set(full_grids))
