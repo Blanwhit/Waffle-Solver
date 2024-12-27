@@ -5,6 +5,7 @@ import check_good_grids
 import get_good_grids
 import generate_string_grid
 import mapping
+import visualize_grid
 
 grid = mapping.default_grid  # Set default grid
 
@@ -21,34 +22,25 @@ for i in range(len(words)):
 if IS_TESTING:  # Solve pre-made grid
     import testing
 
+    starting_grid = testing.test_grids[2]
+
     # Solve
     (
-        good_triples,
+        good_triples_horizontal,
+        good_triples_vertical,
         good_letters,
         good_words,
-    ) = get_acceptable_triples.get_acceptable_triples(testing.test_grid, words)
+    ) = get_acceptable_triples.get_acceptable_triples(starting_grid, words)
 
-    good_grids = get_good_grids.get_good_grids(good_triples, good_letters, good_words)
+    good_grids = get_good_grids.get_good_grids(
+        good_triples_horizontal, good_triples_vertical, good_letters, good_words
+    )
 
-    solution_grids = check_good_grids.check_good_grids(testing.test_grid, good_grids)
+    solution_grids = check_good_grids.check_good_grids(starting_grid, good_grids)
 
     # Visualise solved grids
     for solution_grid in solution_grids:
-        print("\n")
-
-        # Create default grid object to modify
-        complete_grid = mapping.default_grid
-        for i in complete_grid.keys():
-            # Avoid blank letters
-            if complete_grid[i] != "BLANK":
-                # Update grid dictionary to match grid solution tuple
-                complete_grid[i]["letter"] = solution_grid[mapping.grid_mapping[i][0]][
-                    mapping.grid_mapping[i][1]
-                ][mapping.grid_mapping[i][2]]
-
-        # Visualise solved grid
-        print(generate_string_grid.generate_string_grid(complete_grid))
-        print("\n")
+        visualize_grid.visualize_grid(starting_grid, solution_grid)
 
 
 else:  # Solve grid made by user
@@ -107,31 +99,22 @@ else:  # Solve grid made by user
     print(generate_string_grid.generate_string_grid(grid))
     print("Solving...")
 
+    starting_grid = grid
+
     # Solve
     (
-        good_triples,
+        good_triples_horizontal,
+        good_triples_vertical,
         good_letters,
         good_words,
-    ) = get_acceptable_triples.get_acceptable_triples(grid, words)
+    ) = get_acceptable_triples.get_acceptable_triples(starting_grid, words)
 
-    good_grids = get_good_grids.get_good_grids(good_triples, good_letters, good_words)
+    good_grids = get_good_grids.get_good_grids(
+        good_triples_horizontal, good_triples_vertical, good_letters, good_words
+    )
 
-    solution_grids = check_good_grids.check_good_grids(grid, good_grids)
+    solution_grids = check_good_grids.check_good_grids(starting_grid, good_grids)
 
     # Visualise solved grids
     for solution_grid in solution_grids:
-        print("\n")
-
-        # Create default grid object to modify
-        complete_grid = mapping.default_grid
-        for i in complete_grid.keys():
-            # Avoid blank letters
-            if complete_grid[i] != "BLANK":
-                # Update grid dictionary to match grid solution tuple
-                complete_grid[i]["letter"] = solution_grid[mapping.grid_mapping[i][0]][
-                    mapping.grid_mapping[i][1]
-                ][mapping.grid_mapping[i][2]]
-
-        # Visualise solved grid
-        print(generate_string_grid.generate_string_grid(complete_grid))
-        print("\n")
+        visualize_grid.visualize_grid(starting_grid, solution_grid)
