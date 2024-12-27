@@ -3,11 +3,38 @@ import generate_string_grid
 import find_swaps
 
 
-def visualize_grid(starting_grid: dict, final_grid: dict) -> None:
+def visualize_grid(starting_grid: dict, final_grid: tuple[tuple[str]]) -> None:
     print("\n")
 
     # Create default grid object to modify
-    grid_vis = mapping.default_grid
+    grid_vis = {
+        "0-5": {"type": "", "letter": "."},
+        "0-6": {"type": "", "letter": "."},
+        "0-7": {"type": "", "letter": "."},
+        "0-8": {"type": "", "letter": "."},
+        "0-9": {"type": "", "letter": "."},
+        "1-5": {"type": "", "letter": "."},
+        "1-6": "BLANK",
+        "1-7": {"type": "", "letter": "."},
+        "1-8": "BLANK",
+        "1-9": {"type": "", "letter": "."},
+        "2-5": {"type": "", "letter": "."},
+        "2-6": {"type": "", "letter": "."},
+        "2-7": {"type": "", "letter": "."},
+        "2-8": {"type": "", "letter": "."},
+        "2-9": {"type": "", "letter": "."},
+        "3-5": {"type": "", "letter": "."},
+        "3-6": "BLANK",
+        "3-7": {"type": "", "letter": "."},
+        "3-8": "BLANK",
+        "3-9": {"type": "", "letter": "."},
+        "4-5": {"type": "", "letter": "."},
+        "4-6": {"type": "", "letter": "."},
+        "4-7": {"type": "", "letter": "."},
+        "4-8": {"type": "", "letter": "."},
+        "4-9": {"type": "", "letter": "."},
+    }
+
     for i in grid_vis.keys():
         # Avoid blank letters
         if grid_vis[i] != "BLANK":

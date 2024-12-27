@@ -7,7 +7,7 @@ import generate_string_grid
 import mapping
 import visualize_grid
 
-grid = mapping.default_grid  # Set default grid
+grid = mapping.default_grid.copy()  # Set default grid
 
 IS_TESTING = False  # True to use pre-made grid from testing.py, False to ask the user to fill the grid
 
@@ -99,7 +99,7 @@ else:  # Solve grid made by user
     print(generate_string_grid.generate_string_grid(grid))
     print("Solving...")
 
-    starting_grid = grid
+    starting_grid = grid.copy()
 
     # Solve
     (
