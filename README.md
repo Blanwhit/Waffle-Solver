@@ -11,10 +11,10 @@ The algorithm will solve the Waffle completely using a list of 14855 5-letter wo
 
 For now, the project only supports daily waffles (5x5), but support for 7x7 Waffles is on the roadmap
 
-Other things on the roadmap include:
--Optimisation for the current solver, possibly migrating computationally complex parts to C++
--Optimization for the optimal swap generator
--A more user-friendly GUI
+Other things on the roadmap include:\n
+-Optimisation for the current solver, possibly migrating computationally complex parts to C++\n
+-Optimization for the optimal swap generator\n
+-A more user-friendly GUI\n
 -A solver that accounts for yellow letters
 
 If you want to contribute to the project or simply say thank you, you can find me on discord as `blanwhit`
