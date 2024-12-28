@@ -47,5 +47,9 @@ def visualize_grid(starting_grid: dict, final_grid: tuple[tuple[str]]) -> None:
     print(generate_string_grid.generate_string_grid(grid_vis))
     print("\n")
     swaps = find_swaps.find_min_grid_swaps(starting_grid, grid_vis)
-    print(f"Total swaps: {len(swaps)}\n{swaps}")
+    print(f"Total swaps: {len(swaps)}")
+    swaps_string = ""
+    for swap in swaps:
+        swaps_string += f"\n{swap[0]} -> {swap[1]}"
+    print(swaps_string)
     print("\n-------------------")

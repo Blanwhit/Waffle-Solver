@@ -70,8 +70,13 @@ def find_min_swaps(s1: str, s2: str) -> list[tuple[int, int]]:
     perms_options = []
 
     for option in l2_options:
-        perm = [l1_unique.index(i) for i in option]
-        perms_options.append(Permutation(perm))
+        bad = False
+        for ind in range(len(option)):
+            if option[ind] != l1_unique[ind] and option[ind][0] == l1_unique[ind][0]:
+                bad = True
+        if not bad:
+            perm = [l1_unique.index(i) for i in option]
+            perms_options.append(Permutation(perm))
 
     transposition_options = []
 

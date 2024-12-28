@@ -10,7 +10,10 @@ import visualize_grid
 grid = mapping.default_grid.copy()  # Set default grid
 
 IS_TESTING = False  # True to use pre-made grid from testing.py, False to ask the user to fill the grid
-
+TESTING_GRID = (
+    3  # The number of the grid to test (Only relevant if IS_TESTING is set to True)
+)
+VERBOSE = False  # Whether the grid object will be printed out when inputed by user (Only relevant if IS_TESTING is set to False)
 
 # Get words from words.txt
 words_raw = open("words.txt", "r")
@@ -22,7 +25,7 @@ for i in range(len(words)):
 if IS_TESTING:  # Solve pre-made grid
     import testing
 
-    starting_grid = testing.test_grids[2]
+    starting_grid = testing.test_grids[TESTING_GRID]
 
     # Solve
     (
@@ -39,6 +42,7 @@ if IS_TESTING:  # Solve pre-made grid
     solution_grids = check_good_grids.check_good_grids(starting_grid, good_grids)
 
     # Visualise solved grids
+    print("\n-------------------")
     for solution_grid in solution_grids:
         visualize_grid.visualize_grid(starting_grid, solution_grid)
 
@@ -98,6 +102,9 @@ else:  # Solve grid made by user
     os.system("cls||clear")
     print(generate_string_grid.generate_string_grid(grid))
     print("Solving...")
+
+    if VERBOSE:
+        print(grid)
 
     starting_grid = grid.copy()
 
